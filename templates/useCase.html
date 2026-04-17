@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="bg-gray-800 min-h-screen text-white py-12 px-6">
+
+    <h1 class="text-4xl font-bold text-center mb-12">Features</h1>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Feature 1 -->
+        <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-4">
+            <img src="{{ url_for('static', filename=feature['VideoImg']) }}"
+                 alt="{{ feature['feature1'] }}"
+                 class="w-80 h-80 object-contain mb-4"> <!-- Increased size -->
+            <h2 class="text-2xl font-semibold mb-2">{{ feature['feature1'] }}</h2>
+            <p class="text-gray-300">{{ feature['VideoInfo'] }}</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-4">
+            <img src="{{ url_for('static', filename=feature['PhotoImg']) }}"
+                 alt="{{ feature['feature2'] }}"
+                 class="w-80 h-80 object-contain mb-4"> <!-- Increased size -->
+            <h2 class="text-2xl font-semibold mb-2">{{ feature['feature2'] }}</h2>
+            <p class="text-gray-300">{{ feature['PhotoInfo'] }}</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-4">
+            <img src="{{ url_for('static', filename=feature['GamingImg']) }}"
+                 alt="{{ feature['feature3'] }}"
+                 class="w-80 h-80 object-contain mb-4"> <!-- Increased size -->
+            <h2 class="text-2xl font-semibold mb-2">{{ feature['feature3'] }}</h2>
+            <p class="text-gray-300">{{ feature['GamingInfo'] }}</p>
+        </div>
+          <!-- Feature 4 -->
+        <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-4">
+            <img src="{{ url_for('static', filename=feature['MultiTaskImg']) }}"
+                 alt="{{ feature['feature4'] }}"
+                 class="w-80 h-80 object-contain mb-4"> <!-- Increased size -->
+            <h2 class="text-2xl font-semibold mb-2">{{ feature['feature4'] }}</h2>
+            <p class="text-gray-300">{{ feature['MultiTaskInfo'] }}</p>
+        </div>
+
+          <!-- Feature 5 -->
+        <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-4">
+            <img src="{{ url_for('static', filename=feature['ProductivityImg']) }}"
+                 alt="{{ feature['feature5'] }}"
+                 class="w-80 h-80 object-contain mb-4"> <!-- Increased size -->
+            <h2 class="text-2xl font-semibold mb-2">{{ feature['feature5'] }}</h2>
+            <p class="text-gray-300">{{ feature['ProductivityInfo'] }}</p>
+        </div>
+
+              <!-- Feature 5 -->
+        <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-4">
+            <img src="{{ url_for('static', filename=feature['CommunicationImg']) }}"
+                 alt="{{ feature['feature6'] }}"
+                 class="w-80 h-80 object-contain mb-4"> <!-- Increased size -->
+            <h2 class="text-2xl font-semibold mb-2">{{ feature['feature6'] }}</h2>
+            <p class="text-gray-300">{{ feature['CommunicationInfo'] }}</p>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

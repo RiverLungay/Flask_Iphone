@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="min-h-screen flex flex-col items-center justify-start pt-16 px-4 bg-gray-800 text-white">
+
+  <!-- Section Header -->
+  <h4 class="text-gray-400 uppercase tracking-wide text-sm mb-2">What</h4>
+  <h1 class="text-4xl md:text-5xl font-bold mb-6 text-center">{{ product.name }}</h1>
+
+  <!-- Product Image -->
+<div class="w-full max-w-sm mb-6 rounded-xl overflow-hidden 
+            bg-gray-900 p-2 relative">
+
+  <!-- Main Image -->
+  <img id="product-image" 
+       src="{{ url_for('static', filename='img/' + product.image) }}" 
+       alt="{{ product.name }}" 
+       class="w-full h-auto rounded-xl shadow-2xl object-contain cursor-crosshair">
+
+  <!-- Magnifier container (hidden by default) -->
+  <div id="magnifier" class="hidden pointer-events-none fixed border-2 border-gray-400 rounded-full overflow-hidden w-48 h-48 z-50">
+    <img id="magnified-image" 
+         src="{{ url_for('static', filename='img/' + product.image) }}" 
+         alt="Zoomed" class="absolute w-[300%] h-[300%] object-cover">
+  </div>
+</div>
+  <!-- Product Image -->
+
+
+
+
+
+      <div class="flex justify-around ">
+        <a href="{{ url_for('box', product_id=product.id) }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200 ml-3">In The Box</a>
+
+         </div>
+
+
+         
+
+
+  <!-- Product Price -->
+  <h2 class="text-3xl font-semibold text-green-400 mb-4">
+    {{ product.price }}
+  </h2>
+
+  <!-- Product Description -->
+  {% if product.description %}
+  <p class="text-gray-300 text-center max-w-md mb-8">
+    {{ product.description }}
+  </p>
+  {% endif %}
+
+ <div class="bg-gray-800 min-h-screen p-8 text-white">
+    <div class="max-w-4xl mx-auto bg-gray-900 rounded-xl shadow-lg p-6">
+        <!-- Product Title -->
+        <h1 class="text-3xl font-bold mb-6">{{ product.name }} Technical Specification</h1>
+
+        <!-- Specs Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 bg-gray-700 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-2">Camera</h2>
+                <p>{{ product.camera }}</p>
+            </div>
+            <div class="p-4 bg-gray-700 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-2">Front Camera</h2>
+                <p>{{ product.frontCam }}</p>
+            </div>
+            <div class="p-4 bg-gray-700 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-2">Chip</h2>
+                <p>{{ product.chip }}</p>
+            </div>
+            <div class="p-4 bg-gray-700 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-2">Video</h2>
+                <p>{{ product.video }}</p>
+            </div>
+            <div class="p-4 bg-gray-700 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-2">Battery / Power</h2>
+                <p>{{ product.powerBattery }}</p>
+            </div>
+            <div class="p-4 bg-gray-700 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-2">Memory</h2>
+                <p>{{ product.memory }}</p>
+            </div>
+            <div class="p-4 bg-gray-700 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-2">Weight</h2>
+                <p>{{ product.weight }}</p>
+            </div>
+            <div class="p-4 bg-gray-700 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-2">Dimensions (HxWxD)</h2>
+                <p>{{ product.height }} x {{ product.width }} x {{ product.depth }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<h class="font-semibold text-3xl mt-1">Highlights</h>
+
+
+
+
+
+
+<div x-data="{ current: 0 }" class="w-full max-w-5xl mx-auto mt-10 relative mb-10">
+
+  <!-- Slides -->
+  <template x-for="(slide, index) in [0,1,2]" :key="index">
+    <div 
+      x-show="current === index"
+      class="w-full h-auto rounded-lg bg-gray-900 hover:bg-gray-800 transition-colors duration-500 p-4"
+      x-transition:enter="transition ease-out duration-500"
+      x-transition:enter-start="opacity-0 translate-x-full"
+      x-transition:enter-end="opacity-100 translate-x-0"
+      x-transition:leave="transition ease-in duration-500"
+      x-transition:leave-start="opacity-100 translate-x-0"
+      x-transition:leave-end="opacity-0 -translate-x-full"
+    >
+      <h2 class="mx-auto mt-5 font-semibold text-2xl text-center"
+          x-text="index === 0 ? '{{ product.description1 }}' : index === 1 ? '{{ product.description2 }}' : '{{ product.description3 }}'">
+      </h2>
+
+      <div class="w-full max-w-lg mx-auto mt-4 overflow-hidden">
+        <img :src="index === 0 ? '{{ url_for('static', filename='img/' + product.image1) }}' 
+                  : index === 1 ? '{{ url_for('static', filename='img/' + product.image2) }}' 
+                  : '{{ url_for('static', filename='img/' + product.image3) }}'"
+             alt="{{ product.name }}"
+             class="w-full h-auto rounded-xl object-contain transform transition-transform duration-500 hover:-translate-y-3">
+      </div>
+    </div>
+  </template>
+
+  <!-- Left Arrow -->
+  <button @click="current = (current === 0 ? 2 : current - 1)" 
+          class="absolute top-1/2 left-0 -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 hover:bg-gray-600">
+    &#8592;
+  </button>
+
+  <!-- Right Arrow -->
+  <button @click="current = (current === 2 ? 0 : current + 1)" 
+          class="absolute top-1/2 right-0 -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 hover:bg-gray-600">
+    &#8594;
+  </button>
+
+</div>
+
+<!-- Alpine.js CDN -->
+<script src="//unpkg.com/alpinejs" defer></script>
+
+
+
+<script>
+  const image = document.getElementById('product-image');
+const magnifier = document.getElementById('magnifier');
+const zoomed = document.getElementById('magnified-image');
+
+image.addEventListener('mousemove', function(e) {
+    const rect = image.getBoundingClientRect();
+    const x = e.clientX - rect.left; // x position within the image
+    const y = e.clientY - rect.top;  // y position within the image
+
+    // Show magnifier
+    magnifier.style.display = 'block';
+    magnifier.style.left = e.pageX + 20 + 'px'; // offset to right of cursor
+    magnifier.style.top = e.pageY - 60 + 'px'; // slightly above cursor
+
+    // Calculate zoom position
+    const percentX = x / rect.width;
+    const percentY = y / rect.height;
+
+    // Move zoomed image inside magnifier (with scaling)
+    zoomed.style.left = `-${percentX * zoomed.offsetWidth - magnifier.offsetWidth/2}px`;
+    zoomed.style.top = `-${percentY * zoomed.offsetHeight - magnifier.offsetHeight/2}px`;
+});
+
+image.addEventListener('mouseleave', function() {
+    magnifier.style.display = 'none';
+});
+</script>
+
+
+  </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/explore.js') }}"></script>
+
+
+{% endblock %}

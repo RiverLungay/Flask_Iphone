@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="bg-gray-800 min-h-screen text-white py-12 px-6">
+
+    <h1 class="text-4xl font-bold text-center mb-12">Features</h1>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Feature 1 -->
+        <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-4">
+            <img src="{{ url_for('static', filename=feature['gamingImg']) }}"
+                 alt="{{ feature['feature1'] }}"
+                 class="w-80 h-80 object-contain mb-4"> <!-- Increased size -->
+            <h2 class="text-2xl font-semibold mb-2">{{ feature['feature1'] }}</h2>
+            <p class="text-gray-300">{{ feature['gamingInfo'] }}</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-4">
+            <img src="{{ url_for('static', filename=feature['OSImg']) }}"
+                 alt="{{ feature['feature2'] }}"
+                 class="w-80 h-80 object-contain mb-4"> <!-- Increased size -->
+            <h2 class="text-2xl font-semibold mb-2">{{ feature['feature2'] }}</h2>
+            <p class="text-gray-300">{{ feature['OSInfo'] }}</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-4">
+            <img src="{{ url_for('static', filename=feature['SecurityImg']) }}"
+                 alt="{{ feature['feature3'] }}"
+                 class="w-80 h-80 object-contain mb-4"> <!-- Increased size -->
+            <h2 class="text-2xl font-semibold mb-2">{{ feature['feature3'] }}</h2>
+            <p class="text-gray-300">{{ feature['SecurityInfo'] }}</p>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

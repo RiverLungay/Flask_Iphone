@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+
+
+<div class="w-full h-100 flex items-center justify-between p-2 mt-10">
+
+  <!-- Card -->
+  <div class="relative h-full w-80 border-2 border-gray-700 rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:border-4 hover:border-gray-100 shadow-lg hover:shadow-xl group ml-10">
+    
+    <!-- iPhone image -->
+    <img src="{{ url_for('static', filename='img/iphone17.png') }}" alt="iPhone" class="h-full w-full object-contain">
+
+    <!-- Mask overlay -->
+    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-70 transition-opacity duration-300 rounded-lg"></div>
+
+    <!-- Name & Price -->
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-2">
+      <h2 class="font-bold text-lg">iPhone 17</h2>
+      <p class="text-sm mb-4">$999</p>
+      
+      <!-- Buttons (appear on hover & slide up) -->
+      <div class="flex gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <a href="{{ url_for('buy', product_id=1) }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200">Buy Now</a>
+        <a href="{{ url_for('explore', product_id=1) }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200">Explore</a>
+        <a href="https://example.com/video" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200">Watch Video</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Duplicate cards -->
+  <div class="relative h-full w-80 border-2 border-gray-700 rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:border-4 hover:border-gray-100 shadow-lg hover:shadow-xl group">
+    <img src="{{ url_for('static', filename='img/iphone17Airs.png') }}" alt="iPhone" class="h-full w-full object-contain">
+    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-70 transition-opacity duration-300 rounded-lg"></div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-2">
+      <h2 class="font-bold text-lg">iPhone 17</h2>
+      <p class="text-sm mb-4">$999</p>
+      <div class="flex gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <a href="{{ url_for('buy', product_id=2) }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200">Buy Now</a>
+        <a href="{{ url_for('explore', product_id=2 )}}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200">Explore</a>
+        <a href="https://example.com/video" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200">Watch Video</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative h-full w-80 border-2 border-gray-700 rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:border-4 hover:border-gray-100 shadow-lg hover:shadow-xl group mr-10">
+    <img src="{{ url_for('static', filename='img/iphone17Pro.png') }}" alt="iPhone" class="h-full w-full object-contain">
+    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-70 transition-opacity duration-300 rounded-lg"></div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-2">
+      <h2 class="font-bold text-lg">iPhone 17</h2>
+      <p class="text-sm mb-4">$999</p>
+      <div class="flex gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <a href="{{ url_for('buy', product_id=3) }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200">Buy Now</a>
+        <a href="{{ url_for('explore', product_id=3) }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200">Explore</a>
+        <a href="https://example.com/video" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-semibold px-3 py-1 rounded transition-transform duration-200">Watch Video</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}
